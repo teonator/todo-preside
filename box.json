@@ -1,0 +1,14 @@
+{
+    "name":"Todo",
+    "version":"1.0.0",
+    "author":"Teon Ooi",
+    "slug":"todo",
+    "createPackageDirectory" : false,
+    "private":true,
+    "installPaths":{
+        "presidecms":"preside"
+    },
+    "dependencies":{
+        "presidecms":"stable"
+    }
+}
