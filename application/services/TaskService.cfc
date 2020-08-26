@@ -22,4 +22,16 @@
 
 		return query ?: queryNew( "" );
 	}
+
+	public string function addTask( required string label ) {
+		var id = $getPresideObject('task').insertData(
+			data = {
+				  label = arguments.label
+				, status = false
+			}
+		);
+
+		return id ?: "";
+	}
+
 }

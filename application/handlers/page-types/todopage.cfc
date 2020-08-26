@@ -43,9 +43,10 @@ component {
 		var validationResult = validateForm( formName=formName, formData=formData );
 
 		if ( validationResult.validated() ) {
+			taskService.addTask( label=formData.label );
+
 			formStatus = "success";
 			formMessage = "Aww yeah! New task has successfully created.";
-
 		}
 		else {
 			formStatus = "danger";
