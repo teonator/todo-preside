@@ -2,8 +2,10 @@
 <cfparam name="args.main_content" type="string" field="page.main_content" editable="true" />
 
 <cfscript>
-	var formName = "todo_form";
-	var formId = "todo-form";
+	var formName    = args.formName    ?: "";
+	var formId      = args.formId      ?: "";
+	var formStatus  = args.formStatus  ?: "";
+	var formMessage = args.formMessage ?: "";
 
 	var validationResult = args.validationResult ?: "";
 	var savedData        = args.savedData        ?: {};
@@ -16,6 +18,12 @@
 	#args.main_content#
 
 	<br />
+
+	<cfif len( formStatus )>
+		<div class="alert alert-#formStatus#">
+			#formMessage#
+		</div>
+	</cfif>
 
 	<h4>New</h4>
 	<hr />
