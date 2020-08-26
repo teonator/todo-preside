@@ -16,9 +16,8 @@ component {
 	}
 
 	public function index( event, rc, prc, args={} ) {
-		args.formData    = rc.formData    ?: {};
-		args.formStatus  = rc.formStatus  ?: "";
-		args.formMessage = rc.formMessage ?: "";
+		args.formData       = rc.formData       ?: {};
+		args.additionalArgs = rc.additionalArgs       ?: {};
 
 		return renderView(
 			  view          = 'page-types/todopage/index'
@@ -31,7 +30,8 @@ component {
 	private function _tasks( event, rc, prc, args={} ) {
 		var status = args.status ?: false;
 
-		args.tasks = taskService.getTasks( status=status );
+		args.tasks  = taskService.getTasks( status=status );
+		args.status = status;
 
 		return renderView( view='page-types/todopage/_tasks', args=args );
 	}

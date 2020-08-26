@@ -15,9 +15,7 @@
 <cfoutput>
 	<h1>#args.title#</h1>
 
-	#args.main_content#
-
-	<br />
+	<div class="mb-3">#args.main_content#</div>
 
 	<cfif len( formStatus )>
 		<div class="alert alert-#formStatus#">
@@ -25,24 +23,34 @@
 		</div>
 	</cfif>
 
-	<h4>New</h4>
-	<hr />
-	<form id="#formId#" name="#formName#" action="#event.buildLink( linkTo="page-types.todopage.save" )#" method="POST">
-		#renderForm(
-			  formName         = formName
-			, formId           = formId
-			, context          = "website"
-			, validationResult = validationResult
-			, savedData        = savedData
-			, additionalArgs   = additionalArgs
-		)#
+	<form id="#formId#" name="#formName#" action="#event.buildLink( linkTo="page-types.todopage.save" )#" method="POST" class="mt-3 mb-4">
+		<div class="d-flex align-items-center">
+			<div class="flex-grow-1 pr-3">
+				#renderForm(
+					  formName         = formName
+					, formId           = formId
+					, context          = "website"
+					, fieldLayout      = "formcontrols.layouts.inlinefield"
+					, validationResult = validationResult
+					, savedData        = savedData
+					, additionalArgs   = additionalArgs
+				)#
+			</div>
+
+			<button type="submit" class="btn btn-primary">
+				<i class="fas fa-plus"></i>
+			</button>
+		</div>
 	</form>
 
-	<h4>Todo</h4>
-	<hr />
-	#renderViewlet( event="page-types.todopage._tasks", args={ status=false } )#
-
-	<h4>Done</h4>
-	<hr />
-	#renderViewlet( event="page-types.todopage._tasks", args={ status=true } )#
+	<div class="row">
+		<div class="col col-sm-6">
+			<h4>Pending</h4>
+			#renderViewlet( event="page-types.todopage._tasks", args={ status=false } )#
+		</div>
+		<div class="col col-sm-6">
+			<h4>Done</h4>
+			#renderViewlet( event="page-types.todopage._tasks", args={ status=true } )#
+		</div>
+	</div>
 </cfoutput>

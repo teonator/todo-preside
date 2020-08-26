@@ -10,8 +10,10 @@
 	public query function getTasks( boolean status=false ) {
 		var query = $getPresideObject('task').selectData(
 			  selectFields = [
-				  "label"
+				  "id"
+				, "label"
 				, "status"
+				, "datecreated"
 			]
 			, filter       = "status = :status"
 			, filterParams = {
@@ -33,5 +35,4 @@
 
 		return id ?: "";
 	}
-
 }
