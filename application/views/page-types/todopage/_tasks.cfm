@@ -1,4 +1,5 @@
 <cfoutput>
+	<cfif args.tasks.recordCount>
 	<ul class="list-group mb-3">
 		<cfloop query="args.tasks">
 			<li class="list-group-item list-group-item-action d-flex align-items-center">
@@ -19,4 +20,15 @@
 			</li>
 		</cfloop>
 	</ul>
+	<cfelse>
+		<cfif args.status>
+			<p class="text-danger">
+				No done tasks.
+			</p>
+		<cfelse>
+			<p class="text-success">
+	  			No pending tasks.
+			</p>
+		</cfif>
+	</cfif>
 </cfoutput>
