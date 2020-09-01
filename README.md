@@ -1,5 +1,18 @@
-A skeleton PresideCMS application to be used as a starting point for basic applications.
+# Todo Preside
 
-### Important
+A demo todo web app using PresideCMS.
 
-This package should be installed using the `preside new site` command from CommandBox rather than directly. See [PresideCMS Commands](https://www.forgebox.io/view/preside-commands).
+![screenshot]( https://github.com/teonator/todo-preside/blob/master/screenshot.png "Screenshot")
+
+## Prerequisite
+* [CommandBox](https://commandbox.ortusbooks.com/setup/installation) 
+* [PresideCMS Commands](https://github.com/pixl8/Preside-CMS-CommandBox-Commands) 
+
+## Getting started
+
+```
+$ git clone git@github.com:teonator/todo-preside.git
+$ cd todo-preside
+$ box install
+$ box preside start
+```
