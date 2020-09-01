@@ -12,8 +12,8 @@ component extends="preside.system.config.Config" {
 		settings.sql_log_name        = "todo";
 		settings.sql_log_level       = "information";
 
-		settings.ckeditor.defaults.stylesheets.append( "css-bootstrap" );
-		settings.ckeditor.defaults.stylesheets.append( "css-layout" );
+		// settings.ckeditor.defaults.stylesheets.append( "css-bootstrap" );
+		// settings.ckeditor.defaults.stylesheets.append( "css-layout" );
 
 		settings.features.websiteUsers.enabled = false;
 	}
