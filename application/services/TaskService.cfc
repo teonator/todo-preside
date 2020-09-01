@@ -35,4 +35,27 @@
 
 		return id ?: "";
 	}
+
+	public string function editTask( required string id, required boolean status ) {
+		$getPresideObject('task').updateData(
+			  id   = arguments.id
+			, data = {
+				status = arguments.status
+			}
+		);
+
+		return arguments.id;
+	}
+
+	public string function deleteTask( required string id, boolean status=true  ) {
+		$getPresideObject('task').deleteData(
+			  id           = arguments.id
+			, filter       = "status = :status"
+			, filterParams = {
+				"status" = { type="boolean", value=arguments.status }
+			}
+		);
+
+		return arguments.id;
+	}
 }

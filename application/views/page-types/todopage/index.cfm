@@ -23,7 +23,7 @@
 		</div>
 	</cfif>
 
-	<form id="#formId#" name="#formName#" action="#event.buildLink( linkTo="page-types.todopage.save" )#" method="POST" class="mt-3 mb-4">
+	<form id="#formId#" name="#formName#" action="#event.buildLink( linkTo="page-types.todopage.add" )#" method="POST" class="mt-3 mb-4">
 		<div class="d-flex align-items-center">
 			<div class="flex-grow-1 pr-3">
 				#renderForm(

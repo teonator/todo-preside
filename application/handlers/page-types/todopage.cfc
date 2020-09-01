@@ -27,16 +27,7 @@ component {
 		);
 	}
 
-	private function _tasks( event, rc, prc, args={} ) {
-		var status = args.status ?: false;
-
-		args.tasks  = taskService.getTasks( status=status );
-		args.status = status;
-
-		return renderView( view='page-types/todopage/_tasks', args=args );
-	}
-
-	public function save( event, rc, prc, args={} ) {
+	public function add( event, rc, prc, args={} ) {
 		var formName         = rc.$presideform;
 		var formData         = event.getCollectionForForm( formName=formName );
 
@@ -62,5 +53,30 @@ component {
 				, formMessage      = formMessage
 			}
 		);
+	}
+
+	public function edit( event, rc, prc, args={} ) {
+		var id = rc.id ?: "";
+
+		taskService.editTask( id=id, status=true );
+
+		relocate( url = event.buildLink( page="todopage" ) );
+	}
+
+	public function delete( event, rc, prc, args={} ) {
+		var id = rc.id ?: "";
+
+		taskService.deleteTask( id=id );
+
+		relocate( url = event.buildLink( page="todopage" ) );
+	}
+
+	private function _tasks( event, rc, prc, args={} ) {
+		var status = args.status ?: false;
+
+		args.tasks  = taskService.getTasks( status=status );
+		args.status = status;
+
+		return renderView( view='page-types/todopage/_tasks', args=args );
 	}
 }

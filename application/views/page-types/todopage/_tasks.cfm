@@ -8,11 +8,11 @@
 				</div>
 
 				<cfif args.status>
-					<a class="btn btn-sm btn-outline-danger" href="##">
+					<a class="btn btn-sm btn-outline-danger" href="#event.buildLink( linkTo="page-types.todopage.delete", queryString="id=#id#" )#">
 						<i class="fas fa-times"></i>
 					</a>
 				<cfelse>
-					<a class="btn btn-sm btn-outline-success" href="##">
+					<a class="btn btn-sm btn-outline-success" href="#event.buildLink( linkTo="page-types.todopage.edit", queryString="id=#id#" )#">
 						<i class="fas fa-check"></i>
 					</a>
 				</cfif>
