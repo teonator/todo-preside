@@ -26,11 +26,11 @@
 	</form>
 
 	<div class="row">
-		<div class="col col-sm-6">
+		<div class="col-sm-6">
 			<h4>Pending</h4>
 			#renderViewlet( event="page-types.todopage._tasks", args={ status=false } )#
 		</div>
-		<div class="col col-sm-6">
+		<div class="col-sm-6">
 			<h4>Done</h4>
 			#renderViewlet( event="page-types.todopage._tasks", args={ status=true } )#
 		</div>
