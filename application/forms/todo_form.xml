@@ -2,7 +2,7 @@
 <form i18nBaseUri="forms.todo_form:">
 	<tab>
 		<fieldset>
-			<field name="label" control="textInput"  required="true" />
+			<field name="label" control="textInput" required="true" placeholder="e.g. Pick up the milk tomorrow" />
 		</fieldset>
 	</tab>
 </form>
