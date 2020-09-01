@@ -2,8 +2,8 @@
 <cfparam name="args.main_content" type="string" field="page.main_content" editable="true" />
 
 <cfscript>
-	var formName    = args.formName    ?: "";
-	var formId      = args.formId      ?: "";
+	var formName    = args.formName    ?: "todo_form";
+	var formId      = args.formId      ?: "todo-form";
 	var formStatus  = args.formStatus  ?: "";
 	var formMessage = args.formMessage ?: "";
 

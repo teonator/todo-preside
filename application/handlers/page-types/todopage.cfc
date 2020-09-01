@@ -9,6 +9,7 @@ component {
 			structAppend( arguments.eventArguments.args, {
 				  formName    = variables.formName
 				, formId      = variables.formId
+				, formData    = {}
 				, formStatus  = ""
 				, formMessage = ""
 			} )
@@ -16,20 +17,23 @@ component {
 	}
 
 	public function index( event, rc, prc, args={} ) {
-		args.formData       = rc.formData       ?: {};
-		args.additionalArgs = rc.additionalArgs       ?: {};
+		args.formData    = rc.formData    ?: {};
+		args.formStatus  = rc.formStatus  ?: "";
+		args.formMessage = rc.formMessage ?: "";
+
+		args.additionalArgs = rc.additionalArgs ?: {};
 
 		return renderView(
 			  view          = 'page-types/todopage/index'
 			, presideObject = 'todopage'
 			, id            = event.getCurrentPageId()
-			, args          = arguments.args
+			, args          = args
 		);
 	}
 
 	public function add( event, rc, prc, args={} ) {
-		var formName         = rc.$presideform;
-		var formData         = event.getCollectionForForm( formName=formName );
+		var formName         = variables.formName;
+		var formData         = event.getCollectionForForm( formName=variables.formName );
 
 		var validationResult = validateForm( formName=formName, formData=formData );
 
@@ -40,7 +44,7 @@ component {
 			formMessage = "Aww yeah! New task has successfully created.";
 		}
 		else {
-			formStatus = "danger";
+			formStatus = "warning";
 			formMessage = "Whoops! There were some problems with your input.";
 		}
 
@@ -60,7 +64,13 @@ component {
 
 		taskService.editTask( id=id, status=true );
 
-		relocate( url = event.buildLink( page="todopage" ) );
+		relocate(
+			  url           = event.buildLink( page="todopage" )
+			, persistStruct = {
+				  formStatus  = "success"
+				, formMessage = "Aww yeah! The task has successfully updated."
+			}
+		);
 	}
 
 	public function delete( event, rc, prc, args={} ) {
@@ -68,7 +78,13 @@ component {
 
 		taskService.deleteTask( id=id );
 
-		relocate( url = event.buildLink( page="todopage" ) );
+		relocate(
+			  url           = event.buildLink( page="todopage" )
+			, persistStruct = {
+				  formStatus  = "danger"
+				, formMessage = "Aww yeah! The task has successfully deleted."
+			}
+		);
 	}
 
 	private function _tasks( event, rc, prc, args={} ) {
